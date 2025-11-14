@@ -1,10 +1,10 @@
 import { rolTypes } from "./rolTypes";
 
-export interface Character {
-  id: number;
+export interface User {
+  id: string; // String para UUID
   name: string;
   email: string;
-  pwd: string;
+  password: string; 
   rol?: rolTypes;
   createdAt?: Date; 
 }
