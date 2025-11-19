@@ -16,6 +16,17 @@ Header
 Content-Type: application/json
 ```
 
+Datos para registrar
+```
+{
+  "name": "María García",
+  "email": "maria.garcia@email.com",
+  "password": "Password123",
+  "rol": "Estudiante"
+}
+
+```
+
 Respuesta esperada para éxito - Body:
 ```
 {
@@ -30,10 +41,33 @@ Respuesta esperada para éxito - Body:
 }
 ```
 
+Ejemplo para la creación de un usuario con contraseña débil
+```
+POST http://localhost:3000/users
+```
+
+Header
+```
+Content-Type: application/json
+```
+
+Datos para registrar
+```
+{
+  "name": "Usuario Test contraseña debil",
+  "email": "test@email.com",
+  "password": "123",
+  "rol": "Estudiante"
+}
+```
+
 Respuesta esperada para error - Body:
 ```
 {
-    "message": "El email maria.garcia@email.com ya está registrado",
+    "message": [
+        "La contraseña debe contener al menos una mayúscula, una minúscula y un número",
+        "La contraseña debe tener al menos 6 caracteres"
+    ],
     "error": "Bad Request",
     "statusCode": 400
 }
@@ -90,6 +124,41 @@ Y cuando no hay usuarios en la base de datos, la respuesta esperada - Body es:
 }
 ```
 
+Ejemplo de obtención de un elemento por un ID que no es de tipo UUID
+```
+GET http://localhost:3000/users/123-invalido    
+
+```
+
+Respuesta esperada para este error  - Body:
+```
+{
+    "message": "Validation failed (uuid v 4 is expected)",
+    "error": "Bad Request",
+    "statusCode": 400
+}
+
+cceb8106-91d2-4647-b2ee-2e7b169ac157
+
+```
+
+Ejemplo de obtención de un elemento por un UUID que no existe en la base de datos
+```
+GET http://localhost:3000/users/cceb8106-91d2-4647-b2ee-2e7b169ac154  
+
+```
+
+Respuesta esperada para este error  - Body:
+```
+{
+    "message": "Usuario con id cceb8106-91d2-4647-b2ee-2e7b169ac154 no encontrado",
+    "error": "Not Found",
+    "statusCode": 404
+}
+```
+
+
+
 ### **GET - Obtención un elemento por su EMAIL**
 
 Ejemplo de obtención de un elemento por su EMAIL
@@ -106,6 +175,20 @@ Respuesta esperada (en este caso buscamos el EMAIL de María) - Body:
     "email": "maria.garcia@email.com",
     "rol": "Estudiante",
     "createdAt": "2025-11-19T04:23:08.608Z"
+}
+```
+
+Ejemplo de obtención de un elemento por un EMAIL inexistente en la base de datos
+```
+GET http://localhost:3000/users/email/noexiste@email.com
+```
+
+Respuesta esperada para este error - Body:
+```
+{
+    "message": "Usuario con email noexiste@email.com no encontrado",
+    "error": "Not Found",
+    "statusCode": 404
 }
 ```
 

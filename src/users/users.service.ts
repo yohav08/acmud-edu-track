@@ -81,7 +81,7 @@ export class UsersService {
       }
       return user;
     } catch (error) {
-      console.error('Error al buscar usuario por ID: ', error.message);
+      console.error('Error al buscar usuario por ID - ', error.message);
       this.handlerErrors(error);
     }
   }
