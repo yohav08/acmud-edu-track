@@ -4,7 +4,7 @@
 
 En este repositorio se encuentra el proyecto backend en NestJS que gestiona usuarios, profesores, estudiantes, cursos e inscripciones de EduTrack usando TypeORM, DTOs, servicios, validaciones y seguridad, integrándose con una interfaz gráfica para operaciones académicas del sistema educativo.
 
-Para realizar las pruebas Cliente / Servicio, las guías para cada entidad se encuentran en la carpeta [README'S](https://github.com/yohav08/acmud-edu-track/tree/main/readmes).
+Para realizar las pruebas Cliente / Servicio, las guías para cada entidad se encuentran en la carpeta [README'S](https://github.com/yohav08/acmud-edu-track/tree/main/README'S).
 
 ## Autora
 - Alba Yohana Avila Mendoza - Curso de Backend / NestJS
